@@ -8,7 +8,6 @@ public class SalaryRequest {
     private double basePay;
 
     @PositiveOrZero(message = "Provident fund cannot be negative.")
-    @DecimalMax(value = "0.8", message = "Provident fund cannot be greater than 80% of base pay.")
     private double providentFund;
 
     @Pattern(regexp = "^(old|new)$", message = "Tax regime must be 'old' or 'new'.")

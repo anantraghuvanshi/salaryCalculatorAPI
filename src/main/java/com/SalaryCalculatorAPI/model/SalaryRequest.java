@@ -1,8 +1,17 @@
 package com.SalaryCalculatorAPI.model;
 
+import jakarta.validation.constraints.*;
+
+
 public class SalaryRequest {
+    @PositiveOrZero(message = "Base pay can not be negative")
     private double basePay;
+
+    @PositiveOrZero(message = "Provident fund cannot be negative.")
+    @DecimalMax(value = "0.8", message = "Provident fund cannot be greater than 80% of base pay.")
     private double providentFund;
+
+    @Pattern(regexp = "^(old|new)$", message = "Tax regime must be 'old' or 'new'.")
     private String taxRegime;
 
     public double getBasePay() {
